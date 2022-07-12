@@ -30,10 +30,33 @@ namespace OOP_Lesson_5
 
             Console.WriteLine(numberOst.ToString());
 
+
             int t = number1; // Тест приобразования типов
             float f = number1;
             Console.WriteLine(t);
             Console.WriteLine(f);
+
+
+            CompNumber compNumber1 = new CompNumber(1,5); // Тест комплексных чисел
+
+            CompNumber compNumber2 = new CompNumber(1, 5);
+
+            CompNumber compNumberPlus = compNumber1+compNumber2;
+
+            CompNumber compNumberMinus = compNumber1 - compNumber2;
+
+            CompNumber compNumberMilti = compNumber1 * compNumber2;
+
+            Console.WriteLine(compNumberPlus.ToString());
+
+            Console.WriteLine(compNumberMinus.ToString());
+
+            Console.WriteLine(compNumberMilti.ToString());
+
+            Console.WriteLine(compNumber1 == compNumber2);
+
+            Console.WriteLine(compNumber1.Equals(compNumber2));
+
 
         }
     }

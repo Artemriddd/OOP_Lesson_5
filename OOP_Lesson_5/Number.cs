@@ -40,7 +40,15 @@ namespace OOP_Lesson_5
             X = x;
             Y = y;
         }
-
+        public override bool Equals(object? obj)
+        {
+            if (obj is Number number) return X == number.X && Y == number.Y;
+            return false;
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y);
+        }
         public static bool operator ==(Number n1, Number n2)
         {
             return (n1.X == n2.X && n1.Y == n2.Y);
@@ -110,16 +118,16 @@ namespace OOP_Lesson_5
         }
         public static Number operator -(Number n1, Number n2)
         {
-            int Y_common; // Общий знаменатель
-            int i = 2; // Множитель для поиска наименьшего общего знаменателя
-            if (n1.Y > n2.Y) // Поиск большего знаменателя
+            int Y_common; 
+            int i = 2; 
+            if (n1.Y > n2.Y) 
             {
-                if (n1.Y % n2.Y == 0) // Если знаменатели деляться друг на друга без остатка
+                if (n1.Y % n2.Y == 0) 
                 {
-                    i = n1.Y / n2.Y; // Множитель равен отношению знаменателей
-                    return CutNumber(new Number((n1.X) - (n2.X * i), n1.Y)); // Домнажаем числитель с меньшим знаменателем
+                    i = n1.Y / n2.Y; 
+                    return CutNumber(new Number((n1.X) - (n2.X * i), n1.Y));
                 }
-                while (true) // Поиск наименьшего общего знаменателя, в наихудшем случае наименьший общий знаменатель равен перемножению знаменателей, следует цикл бесконечным быть не может
+                while (true) 
                 {
                     Y_common = n1.Y * i;
                     if (Y_common % n2.Y == 0)
